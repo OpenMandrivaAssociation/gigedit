@@ -4,7 +4,7 @@
 Name:          gigedit
 Summary:       Instrument editor for gig files
 Version:       0.1.1
-Release:       %mkrel 1
+Release:       %mkrel 3
 License:       GPL
 Group:	       Sound
 Source0:       %{name}-%{version}.tar.gz
