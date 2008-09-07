@@ -1,13 +1,15 @@
 %define major   1
-%define libname %mklibname %name %major
+%define libname %mklibname %{name} %{major}
+%define develname %mklibname %{name} -d
 
 Name:          gigedit
 Summary:       Instrument editor for gig files
 Version:       0.1.1
 Release:       %mkrel 3
-License:       GPL
+License:       GPLv2+
 Group:	       Sound
 Source0:       %{name}-%{version}.tar.gz
+Patch0:		gigedit-0.1.1-gcc43.patch
 URL: 	       http://www.linuxsampler.org/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -49,21 +51,21 @@ Librairies from %name
 
 %files -n %libname
 %defattr(-,root,root)
-%_libdir/gigedit/libgigedit.so.1.0.0
-%_libdir/gigedit/libgigedit.so.1
+%_libdir/gigedit/libgigedit.so.%{major}*
 
 #--------------------------------------------------------------------
 
-%package -n     %libname-devel
+%package -n     %develname
 Group:          Development/Other
 Summary:        Libraries for %name
 Requires:       %libname = %version-%release
 Provides:       %{name}-devel = %{version}-%{release}
+Obsoletes:	%{_lib}%{name}1-devel
 
-%description -n %libname-devel
+%description -n %develname
 Development libraries from %name
 
-%files -n %libname-devel
+%files -n %develname
 %defattr (-,root,root)
 %_libdir/gigedit/libgigedit.a
 %_libdir/gigedit/libgigedit.la
@@ -74,9 +76,10 @@ Development libraries from %name
 %prep
 rm -fr %buildroot
 %setup -q -n %name-%version
+%patch0
 
 %build
-%configure
+%configure2_5x
 
 
 make
