@@ -1,15 +1,15 @@
-%define major   1
+%define major   2
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Name:          gigedit
 Summary:       Instrument editor for gig files
-Version:       0.1.1
+Version:       0.2.0
 Release:       %mkrel 3
 License:       GPLv2+
 Group:	       Sound
 Source0:       %{name}-%{version}.tar.gz
-Patch0:		gigedit-0.1.1-gcc43.patch
+#Patch0:		gigedit-0.1.1-gcc43.patch
 URL: 	       http://www.linuxsampler.org/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -17,6 +17,8 @@ BuildRequires: perl(XML::Parser)
 BuildRequires: gtkmm2.4-devel
 BuildRequires: libgig-devel
 BuildRequires: libsndfile-devel
+BuildRequires: liblinuxsampler-devel >= 0.5.0
+BuildRequires: intltool
 
 %description
 An instrument editor for gig files
@@ -67,21 +69,22 @@ Development libraries from %name
 
 %files -n %develname
 %defattr (-,root,root)
-%_libdir/gigedit/libgigedit.a
-%_libdir/gigedit/libgigedit.la
-%_libdir/gigedit/libgigedit.so
+%_libdir/gigedit/*.a
+%_libdir/gigedit/*.la
+%_libdir/gigedit/*.so
+%_libdir/linuxsampler/plugins/*.a
+%_libdir/linuxsampler/plugins/*.la
+%_libdir/linuxsampler/plugins/*.so
 
 #--------------------------------------------------------------------
 
 %prep
 rm -fr %buildroot
 %setup -q -n %name-%version
-%patch0
+#%patch0
 
 %build
 %configure2_5x
-
-
 make
 
 %install
