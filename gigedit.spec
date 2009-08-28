@@ -5,7 +5,7 @@
 Name:          gigedit
 Summary:       Instrument editor for gig files
 Version:       0.2.0
-Release:       %mkrel 3
+Release:       %mkrel 1
 License:       GPLv2+
 Group:	       Sound
 Source0:       %{name}-%{version}.tar.gz
@@ -18,7 +18,9 @@ BuildRequires: gtkmm2.4-devel
 BuildRequires: libgig-devel
 BuildRequires: libsndfile-devel
 BuildRequires: liblinuxsampler-devel >= 0.5.0
+BuildRequires: sqlite3-devel
 BuildRequires: intltool
+
 
 %description
 An instrument editor for gig files
@@ -81,7 +83,6 @@ Development libraries from %name
 %prep
 rm -fr %buildroot
 %setup -q -n %name-%version
-#%patch0
 
 %build
 %configure2_5x
