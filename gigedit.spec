@@ -19,6 +19,7 @@ BuildRequires: libgig-devel
 BuildRequires: libsndfile-devel
 BuildRequires: liblinuxsampler-devel >= 0.5.0
 BuildRequires: sqlite3-devel
+BuildRequires: libjack-devel
 BuildRequires: intltool
 
 
