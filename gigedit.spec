@@ -5,7 +5,7 @@
 Name:          gigedit
 Summary:       Instrument editor for gig files
 Version:       0.2.0
-Release:       2
+Release:       3
 License:       GPLv2+
 Group:         Sound
 Source0:       %{name}-%{version}.tar.gz
