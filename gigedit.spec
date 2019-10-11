@@ -8,7 +8,7 @@ Version:       1.1.1
 Release:       1
 License:       GPLv2+
 Group:         Sound
-Source0:       %{name}-%{version}.tar.gz
+Source0:       %{name}-%{version}.tar.bz2
 #Patch0:        gigedit-0.1.1-gcc43.patch
 URL:           http://www.linuxsampler.org/
 
