@@ -89,7 +89,7 @@ the Edit button in QSampler
 
 %files plugins
 %defattr (-,root,root)
-%_libdir/linuxsampler/plugins/*.a
+#_libdir/linuxsampler/plugins/*.a
 %_libdir/linuxsampler/plugins/*.so
 
 #--------------------------------------------------------------------
