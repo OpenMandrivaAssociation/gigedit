@@ -95,6 +95,8 @@ the Edit button in QSampler
 %autosetup -p1
 
 %build
+export CC=gcc
+export CXX=g++
 %configure2_5x --disable-static
 %make_build
 
