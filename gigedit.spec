@@ -72,7 +72,7 @@ Development libraries from %name
 
 %files -n %develname
 %defattr (-,root,root)
-%_libdir/gigedit/*.a
+#_libdir/gigedit/*.a
 %_libdir/gigedit/*.so
 
 #--------------------------------------------------------------------
