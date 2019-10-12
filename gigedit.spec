@@ -1,26 +1,33 @@
-%define major   2
+%define _disable_ld_no_undefined 1
+%define major   4
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Name:          gigedit
 Summary:       Instrument editor for gig files
-Version:       0.2.0
-Release:       3
+Version:       1.1.1
+Release:       1
 License:       GPLv2+
 Group:         Sound
-Source0:       %{name}-%{version}.tar.gz
+Source0:       http://download.linuxsampler.org/packages/%{name}-%{version}.tar.bz2
 #Patch0:        gigedit-0.1.1-gcc43.patch
 URL:           http://www.linuxsampler.org/
 
 BuildRequires: perl(XML::Parser)
-BuildRequires: gtkmm2.4-devel
-BuildRequires: libgig-devel
-BuildRequires: sndfile-devel
-BuildRequires: liblinuxsampler-devel >= 0.5.0
-BuildRequires: sqlite3-devel
+BuildRequires: pkgconfig(gdkmm-3.0)
+BuildRequires: pkgconfig(gig)
+BuildRequires: pkgconfig(sndfile)
+BuildRequires: pkgconfig(linuxsampler)
+BuildRequires: pkgconfig(sqlite3)
+BuildRequires: pkgconfig(jack)
+BuildRequires: pkgconfig(alsa)
+BuildRequires: pkgconfig(gthread-2.0)
+BuildRequires: pkgconfig(sigc++-2.0)
 BuildRequires: jackit-devel
-BuildRequires: libalsa-devel
 BuildRequires: intltool
+BuildRequires: xsltproc
+BuildRequires: docbook-style-xsl
+
 Requires: %{name}-plugins
 
 %description
@@ -65,7 +72,7 @@ Development libraries from %name
 
 %files -n %develname
 %defattr (-,root,root)
-%_libdir/gigedit/*.a
+#_libdir/gigedit/*.a
 %_libdir/gigedit/*.so
 
 #--------------------------------------------------------------------
@@ -82,20 +89,23 @@ the Edit button in QSampler
 
 %files plugins
 %defattr (-,root,root)
-%_libdir/linuxsampler/plugins/*.a
+#_libdir/linuxsampler/plugins/*.a
 %_libdir/linuxsampler/plugins/*.so
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
+%autosetup -p1
 
 %build
-LDFLAGS="-lsigc-2.0" %configure2_5x
-make
+export CC=gcc
+export CXX=g++
+%configure2_5x --disable-static
+%make_build
 
 %install
-make DESTDIR=%buildroot  install
+%make_install
+
 %find_lang %name
 
 
