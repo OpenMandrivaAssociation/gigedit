@@ -20,6 +20,7 @@ BuildRequires: pkgconfig(linuxsampler)
 BuildRequires: pkgconfig(sqlite3)
 BuildRequires: pkgconfig(jack)
 BuildRequires: pkgconfig(alsa)
+BuildRequires: pkgconfig(gthread-2.0)
 BuildRequires: jackit-devel
 BuildRequires: intltool
 BuildRequires: xsltproc
