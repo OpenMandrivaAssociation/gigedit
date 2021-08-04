@@ -11,6 +11,7 @@ License:       GPLv2+
 Group:         Sound
 Source0:       http://download.linuxsampler.org/packages/%{name}-%{version}.tar.bz2
 #Patch0:        gigedit-0.1.1-gcc43.patch
+Patch0:       gigedit-1.2.0-redeclare.patch
 URL:           http://www.linuxsampler.org/
 
 BuildRequires: perl(XML::Parser)
