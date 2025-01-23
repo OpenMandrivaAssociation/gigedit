@@ -1,5 +1,5 @@
 %define _disable_ld_no_undefined 1
-%define major   5
+%define major   6
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
