@@ -12,6 +12,11 @@ License:	GPLv2+
 Group:	Sound
 Url:	https://www.linuxsampler.org/
 Source0:	https://download.linuxsampler.org/packages/%{name}-%{version}.tar.bz2
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: docbook-style-xsl
 BuildRequires: intltool
 BuildRequires: xsltproc
